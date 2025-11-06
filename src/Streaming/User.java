@@ -33,10 +33,15 @@ public class User extends MainMenu {
             //Scanner scan2 = new Scanner(System.in);
             //String password = scan2.nextLine();
 
-            while(!Password.equals(password)){
-                tUI.promptQuestion( "password not existing");
-               // scan2 = new Scanner(System.in);
-               // password = scan2.nextLine();
+            while (!Password.equals(password)) {
+                String decision = tUI.promptQuestion("Wrong password, would you like to try again?");
+                if (decision.equals("")) {
+                    break;
+                }
+                password = tUI.promptText("Enter password");
+                // scan2 = new Scanner(System.in);
+                // password = scan2.nextLine();
+
             }
             System.out.println("Welcome to Netflix");
         }
