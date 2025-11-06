@@ -10,6 +10,10 @@ public class User extends MainMenu {
     String Username = "Hans";
     String Password = "ABC";
     TextUI tUI = new TextUI();
+    FileIO fUI = new FileIO();
+    String password;
+
+
     boolean decition;
 
     public User() {
@@ -23,11 +27,36 @@ public class User extends MainMenu {
         //String username = scan1.nextLine();
 
         //Control of username.
+
         if (!Username.equals(username)) {
             tUI.displayMessage("Username not existing");
-            user();
+            user(); // ændre til hovedmenu bliver kaldt
         } else {
-            //Control of password.
+            logincode();
+        }
+        return username;
+    }
+
+    //Control of password.
+    public String logincode() { // login method
+        boolean quest = true; // boolean variabel = true so if the users answer is yes they can try again.
+        password = tUI.promptText("Enter password"); // messegen and a scanner call
+
+            while (!Password.equals(password) && quest) {  // while loop so long it's wrong and the user want to try again it will run.
+                tUI.displayMessage("Wrong password, would you try again?  y/n"); // boolean method call there ask the user about yes or no. turn true or false back.
+                quest = tUI.promptQuestion(); // quest = the answer from the user in the line before.
+                if (quest) {
+                    password = tUI.promptText("Enter password"); // saver new input to check
+                }
+            }
+            if (Password.equals(password)) { // if
+                tUI.displayMessage("Wellcome " + Username);
+
+            }return "Welcome " + Username + password;
+
+        }
+}
+        /*
             String password = tUI.promptText("Enter password");
             //Scanner scan2 = new Scanner(System.in);
             //String password = scan2.nextLine();
@@ -44,9 +73,9 @@ public class User extends MainMenu {
         return username;
     }
 }
-
+*/
 /*
-            while (!Password.equals(password) && (decition == true)) {
+            while (Password.equals(password) && (decition == true)) {
                 decition = tUI.promptQuestion("Wrong password, would you like to try again?");
                 password = tUI.promptText("Enter password");
                 // scan2 = new Scanner(System.in);

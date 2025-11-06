@@ -15,15 +15,13 @@ public class TextUI {
     }
 
     public boolean promptQuestion() { // user question yes or no metode
-       promptText("would you try again");
-        String answer= fIO.xxx()
+                String answer= fIO.xxx();
         if (answer.equalsIgnoreCase("Y")) {
             return true;
         } else if (answer.equalsIgnoreCase("N")) {
             return false;
         } else {
             displayMessage("Illegal input. Try again");
-            return promptQuestion();
-        }
+        } return promptQuestion();
     }
 }
