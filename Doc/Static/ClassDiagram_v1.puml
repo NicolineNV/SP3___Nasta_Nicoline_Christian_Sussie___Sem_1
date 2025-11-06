@@ -1,0 +1,81 @@
+@startuml
+!pragma layout smetana
+
+class StartMenu {
++ static void main (String [] args)
+}
+
+class MainMenu {
+
+}
+
+class User {
+}
+
+class Saved {
+
+}
+
+class Watched {
+
+}
+
+class Search {
+
+}
+
+class Movie {
+- double filmLength
+}
+
+class Series {
+- int episodes
+- int seasons
+- double episodeLength
+
+}
+
+interface ISpecification {
+String titel
+int publishedYear
+String category
+double rating
+
+}
+
+package util {
+
+class TextUI {
+
+}
+
+class IOException {
+
+}
+
+class FileIO {
+
+}
+
+}
+
+
+
+StartMenu *-- MainMenu
+
+ISpecification <|-- Series
+ISpecification <|-- Movie
+
+MainMenu *-- User
+MainMenu *-- Search
+MainMenu *-- TextUI
+MainMenu *-- IOException
+MainMenu *-- FileIO
+
+User *-- Saved
+User *-- Watched
+
+Search *-- Movie
+Search *-- Series
+
+@enduml
