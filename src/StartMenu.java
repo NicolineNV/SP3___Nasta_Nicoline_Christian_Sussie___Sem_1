@@ -1,9 +1,11 @@
+import Streaming.User;
+
 public class StartMenu {
 
     public static void main (String[] args){
 
-       Login test = new Login();
-       test.logIn();
+       User test = new User();
+       test.user();
 
     }
 }

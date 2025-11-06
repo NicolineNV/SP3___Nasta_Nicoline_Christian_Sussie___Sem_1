@@ -36,10 +36,10 @@ class Series {
 }
 
 interface ISpecification {
-String titel
-int publishedYear
-String category
-double rating
+String loadTitel ();
+String loadCategories ();
+double loadRating ();
+int loadYear ();
 
 }
 
