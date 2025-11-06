@@ -12,7 +12,7 @@ public class User extends MainMenu {
     TextUI tUI = new TextUI();
 
 
-    public User(){
+    public User() {
     }
 
     public String user() {
@@ -28,8 +28,8 @@ public class User extends MainMenu {
             user();
         } else {
 
-        //Control of password.
-            String password = tUI.promptText( "Enter password");
+            //Control of password.
+            String password = tUI.promptText("Enter password");
             //Scanner scan2 = new Scanner(System.in);
             //String password = scan2.nextLine();
 
@@ -44,6 +44,7 @@ public class User extends MainMenu {
 
             }
             System.out.println("Welcome to Netflix");
+            // metode kald til menu
         }
         return "";
     }

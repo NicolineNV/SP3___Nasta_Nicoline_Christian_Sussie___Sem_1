@@ -25,13 +25,20 @@ class Search {
 }
 
 class Movie {
-- double filmLength
+
+}
+
+class MovieData{
+
 }
 
 class Series {
-- int episodes
-- int seasons
-- double episodeLength
+- String seriesLength
+
+}
+
+class SeriesData{
+
 
 }
 
@@ -59,12 +66,13 @@ class FileIO {
 
 }
 
-
-
 StartMenu *-- MainMenu
 
-ISpecification <|-- Series
-ISpecification <|-- Movie
+ISpecification <|-- SeriesData
+ISpecification <|-- MovieData
+
+Series *-- SeriesData
+Movie*-- MovieData
 
 MainMenu *-- User
 MainMenu *-- Search
