@@ -5,10 +5,10 @@ public class SeriesData extends Series implements ISpecification{
     private String titel;
     private String categories;
     private double rating;
-    private int year;
+    private String year;
 
 
-    public SeriesData (String titel, String categories, double rating, int year, String seriesLength){
+    public SeriesData(String titel, String year, String categories, double rating, String seriesLength) {
         super(seriesLength);
         this.titel = titel;
         this.categories = categories;
@@ -33,7 +33,7 @@ public class SeriesData extends Series implements ISpecification{
     }
 
     @Override
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 

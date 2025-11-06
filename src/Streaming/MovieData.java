@@ -5,15 +5,16 @@ public class MovieData extends Movie implements ISpecification{
     private String titel;
     private String categories;
     private double rating;
-    private int year;
+    private String year;
 
 
-    public MovieData (String titel, String categories, double rating, int year){
+
+    public MovieData(String titel, String year, String categories, double rating) {
+        super();
         this.titel = titel;
         this.categories = categories;
         this.rating = rating;
         this.year = year;
-
     }
 
 
@@ -33,7 +34,7 @@ public class MovieData extends Movie implements ISpecification{
     }
 
     @Override
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 }

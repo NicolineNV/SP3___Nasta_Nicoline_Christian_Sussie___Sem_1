@@ -7,7 +7,7 @@ public interface ISpecification {
     String getTitel();
     String getCategories ();
     double getRating ();
-    int getYear ();
+    String getYear ();
 
 
 

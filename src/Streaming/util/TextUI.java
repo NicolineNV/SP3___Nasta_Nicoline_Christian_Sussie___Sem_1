@@ -14,16 +14,16 @@ public class TextUI {
         System.out.println(msg);
     }
 
-    public String promptQuestion(String output) { // user question yes or no metode
-        displayMessage(output);
-        String answer = fIO.xxx();
+    public boolean promptQuestion() { // user question yes or no metode
+       promptText("would you try again");
+        String answer= fIO.xxx()
         if (answer.equalsIgnoreCase("Y")) {
-            return "true";
+            return true;
         } else if (answer.equalsIgnoreCase("N")) {
-            return "false";
+            return false;
         } else {
             displayMessage("Illegal input. Try again");
-            return promptQuestion(output);
+            return promptQuestion();
         }
     }
 }
