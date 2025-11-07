@@ -3,46 +3,59 @@
 
 class StartMenu {
 + static void main (String [] args)
+void logIn ();
 }
 
 class MainMenu {
-
+void displayWatched ();
+void displaySaved ();
+void searchTitel ();
+void searchCategory ();
 }
 
 class User {
+ArrayList IMedia
+ArrayList Watched
+ArrayList Saved
+ArrayList Accounts
+String userName
+String userPassword
+String ArrayList <> addAccounts ();
+String ArrayList <> savedMedia ();
+String ArrayList <> watchedMedia ();
 }
 
-class Saved {
-
+class Media {
+void searchMedia ();
+void displayMedia ();
+String getMedia ();
 }
 
-class Watched {
 
-}
 
 class Search {
+void searchCategoryMovie (readFile());
+void searchTitelMovie (readFile());
+void searchCategorySeries (readFile());
+void searchTitelSeries (readFile());
+void searchRating (readFile());
 
 }
 
 class Movie {
-
+String getMovie ();
 }
 
-class MovieData{
 
-}
 
 class Series {
 - String seriesLength
-
+String getSeries ();
 }
 
-class SeriesData{
 
 
-}
-
-interface ISpecification {
+interface IMedia {
 String loadTitel ();
 String loadCategories ();
 double loadRating ();
@@ -53,37 +66,37 @@ int loadYear ();
 package util {
 
 class TextUI {
-
+String displayMessage ();
+String promptText ();
+boolean promptQuestion ();
+String IOExceptionMessage ();
 }
 
-class IOException {
 
-}
 
 class FileIO {
-
+void 3Options ();
+String readUserInput ();
+String readFile ();
 }
 
 }
 
 StartMenu *-- MainMenu
 
-ISpecification <|-- SeriesData
-ISpecification <|-- MovieData
+IMedia <|-- Series
+IMedia <|-- Movie
 
-Series *-- SeriesData
-Movie*-- MovieData
+
 
 MainMenu *-- User
-MainMenu *-- Search
+MainMenu *-- Media
 MainMenu *-- TextUI
-MainMenu *-- IOException
 MainMenu *-- FileIO
 
-User *-- Saved
-User *-- Watched
 
-Search *-- Movie
-Search *-- Series
+Media *-- Movie
+Media *-- Series
+Media *-- Search
 
 @enduml
