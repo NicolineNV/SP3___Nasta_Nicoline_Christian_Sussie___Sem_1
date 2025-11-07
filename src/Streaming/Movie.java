@@ -8,6 +8,7 @@ public class Movie extends Search{
     private int counter;
 
     public Movie() {
+        super();
         this.movies = new MovieData [movies.length];
         this.counter = 0;
     }

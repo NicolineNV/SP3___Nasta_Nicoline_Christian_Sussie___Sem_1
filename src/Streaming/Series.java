@@ -10,6 +10,7 @@ public class Series extends Search {
     private int counter;
 
     public Series (String seriesLength){
+        super();
         this.series = new SeriesData[series.length];
         this.counter = 0;
         this.seriesLength = seriesLength;
