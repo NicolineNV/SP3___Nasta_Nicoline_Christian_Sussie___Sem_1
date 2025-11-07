@@ -3,20 +3,20 @@ package Streaming;
 import Streaming.util.FileIO;
 import Streaming.util.TextUI;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class User extends MainMenu {
-
+    private ArrayList<String> savedTitles; // instans variabel for arraylist
     String Username = "Hans";
     String Password = "ABC";
     TextUI tUI = new TextUI();
-    FileIO fUI = new FileIO();
     String password;
 
 
     boolean decition;
 
     public User() {
+        this.savedTitles = new ArrayList<>();
     }
 
     public String user() {
@@ -42,20 +42,21 @@ public class User extends MainMenu {
         boolean quest = true; // boolean variabel = true so if the users answer is yes they can try again.
         password = tUI.promptText("Enter password"); // messegen and a scanner call
 
-            while (!Password.equals(password) && quest) {  // while loop so long it's wrong and the user want to try again it will run.
-                tUI.displayMessage("Wrong password, would you try again?  y/n"); // boolean method call there ask the user about yes or no. turn true or false back.
-                quest = tUI.promptQuestion(); // quest = the answer from the user in the line before.
-                if (quest) {
-                    password = tUI.promptText("Enter password"); // saver new input to check
-                }
+        while (!Password.equals(password) && quest) {  // while loop so long it's wrong and the user want to try again it will run.
+            tUI.displayMessage("Wrong password, would you try again?  y/n"); // boolean method call there ask the user about yes or no. turn true or false back.
+            quest = tUI.promptQuestion(); // quest = the answer from the user in the line before.
+            if (quest) {
+                password = tUI.promptText("Enter password"); // saver new input to check
             }
-            if (Password.equals(password)) { // if
-                tUI.displayMessage("Wellcome " + Username);
-
-            }return "Welcome " + Username + password;
+        }
+        if (Password.equals(password)) { // if
+            tUI.displayMessage("Wellcome " + Username);
 
         }
-}
+        return "Welcome " + Username + password;
+
+    }
+
         /*
             String password = tUI.promptText("Enter password");
             //Scanner scan2 = new Scanner(System.in);
@@ -89,3 +90,24 @@ public class User extends MainMenu {
 }
 
 */
+
+    /* ////////////////////////// arraylist for saved film ////////////////////////////// */
+
+
+    public User(ArrayList<String> titles) {
+
+        if (titles != null) { // if there not are make a list to save on, this will make the list.
+            this.savedTitles = new ArrayList<>(titles);
+        } else {
+            this.savedTitles = new ArrayList<>(); // if there is a saved list it vil save the list.
+        }
+    }
+
+    public void addTitle(String title) { // this method add movies og serie titel to the list.
+        savedTitles.add(title);
+    }
+
+    public ArrayList<String> getSavedTitles() { // make the privet Arraylist titles avaibel
+        return savedTitles;
+    }
+}

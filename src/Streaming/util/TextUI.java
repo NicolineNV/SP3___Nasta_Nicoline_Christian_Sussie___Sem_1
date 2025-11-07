@@ -1,12 +1,12 @@
 package Streaming.util;
-
+import Streaming.util.FileIO;
 public class TextUI {
-    FileIO fIO = new FileIO();
+
 
 
     public String promptText(String output) {
         displayMessage(output);
-        String answer = fIO.xxx();
+        String answer = FileIO.userInput(); // hardkode så denne!!
         return answer;
     }
 
@@ -15,7 +15,7 @@ public class TextUI {
     }
 
     public boolean promptQuestion() { // user question yes or no metode
-                String answer= fIO.xxx();
+                String answer= FileIO.userInput(); // hardkode denne!!
         if (answer.equalsIgnoreCase("Y")) {
             return true;
         } else if (answer.equalsIgnoreCase("N")) {

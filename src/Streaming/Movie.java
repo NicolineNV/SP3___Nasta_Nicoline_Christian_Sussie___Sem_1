@@ -1,14 +1,22 @@
 package Streaming;
 import java.util.*;
 
-public class Movie extends Search{
+public class Movie extends Media implements IMedia{
 
+    private String titel;
+    private String categories;
+    private double rating;
+    private String year;
 
     protected MovieData[] movies;
     private int counter;
 
-    public Movie() {
+    public Movie(String titel, String year, String categories, double rating) {
         super();
+        this.titel = titel;
+        this.categories = categories;
+        this.rating = rating;
+        this.year = year;
         this.movies = new MovieData [movies.length];
         this.counter = 0;
     }
@@ -37,4 +45,23 @@ public class Movie extends Search{
     }
 
 
+    @Override
+    public String getTitel() {
+        return titel;
+    }
+
+    @Override
+    public String getCategories() {
+        return categories;
+    }
+
+    @Override
+    public double getRating() {
+        return rating;
+    }
+
+    @Override
+    public String getYear() {
+        return year;
+    }
 }

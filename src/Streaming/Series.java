@@ -3,14 +3,22 @@ package Streaming;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class Series extends Search {
+public class Series extends Media implements IMedia {
 
+    private String titel;
+    private String categories;
+    private double rating;
+    private String year;
     protected String seriesLength;
     protected SeriesData[] series;
     private int counter;
 
-    public Series (String seriesLength){
+    public Series (String titel, String year, String categories, double rating, String seriesLength){
         super();
+        this.titel = titel;
+        this.categories = categories;
+        this.rating = rating;
+        this.year = year;
         this.series = new SeriesData[series.length];
         this.counter = 0;
         this.seriesLength = seriesLength;
@@ -41,5 +49,28 @@ public class Series extends Search {
     }
 
 
+    @Override
+    public String getTitel() {
+        return titel;
+    }
+
+    @Override
+    public String getCategories() {
+        return categories;
+    }
+
+    @Override
+    public double getRating() {
+        return rating;
+    }
+
+    @Override
+    public String getYear() {
+        return year;
+    }
+
+    public String getSeriesLength(){
+        return seriesLength;
+    }
 }
 
