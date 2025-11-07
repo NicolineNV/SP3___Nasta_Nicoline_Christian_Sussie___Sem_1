@@ -63,7 +63,7 @@ public class User extends MainMenu {
             if (Password == password) {
                 System.out.println("Welcome to Netflix");
                 // metode kald til menu
-            } else if (tUI.promptQuestion(true)){
+            } else if (tUI.promptQuestion()==true){
                 password = tUI.promptText("Enter password");
 
             } else {

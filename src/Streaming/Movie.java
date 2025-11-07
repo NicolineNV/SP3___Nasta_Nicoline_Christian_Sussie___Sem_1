@@ -21,7 +21,7 @@ public class Movie extends Search{
     }
 
     public void createMovies(String[] movies ){
-        for (int i=0; i<movies.length; i++){
+        for (int i=0; i <= movies.length; i++){
             String[] position = movies[i].split(";");
             String titel = position[0].trim();
             String year = position[1].trim();

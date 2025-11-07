@@ -7,7 +7,7 @@ public class StartMenu {
 
        User test = new User();
        test.user();
-       
+
 
     }
 }

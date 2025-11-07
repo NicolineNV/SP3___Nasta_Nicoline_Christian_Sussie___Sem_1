@@ -25,7 +25,7 @@ public class Series extends Search {
     }
 
     public void createSeries (String[] series){
-        for (int i = 0; i < series.length; i++){
+        for (int i = 0; i <= series.length; i++){
             String[] position = series[i].split(";");
             String titel = position[0].trim();
             String year = position [1].trim();
@@ -38,7 +38,7 @@ public class Series extends Search {
         }
         Collections.shuffle(Arrays.asList(series));
     }
-    
+
 
 }
 
