@@ -30,7 +30,7 @@ public class User extends MainMenu {
         //Control of username.
 
         if (!Username.equals(username)) {
-            tUI.displayMessage("Username not existing");
+            tUI.displayMessage("This username does not exist");
             user(); // ændre til hovedmenu bliver kaldt
         } else {
             logincode();
@@ -44,7 +44,7 @@ public class User extends MainMenu {
         password = tUI.promptText("Enter password"); // messegen and a scanner call
 
         while (!Password.equals(password) && quest) {  // while loop so long it's wrong and the user want to try again it will run.
-            tUI.displayMessage("Wrong password, would you try again?  y/n"); // boolean method call there ask the user about yes or no. turn true or false back.
+            tUI.displayMessage("Wrong password, would you like to try again?  y/n"); // boolean method call there ask the user about yes or no. turn true or false back.
             quest = tUI.promptQuestion(); // quest = the answer from the user in the line before.
             if (quest) {
                 password = tUI.promptText("Enter password"); // saver new input to check

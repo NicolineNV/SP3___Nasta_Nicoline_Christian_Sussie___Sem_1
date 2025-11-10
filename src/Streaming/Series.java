@@ -1,12 +1,13 @@
 package Streaming;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
 public class Series extends Media implements IMedia {
 
     private String titel;
-    private String categories;
+    String categories;
     private double rating;
     private String year;
     protected String seriesLength;
@@ -16,10 +17,11 @@ public class Series extends Media implements IMedia {
     public Series (String titel, String year, String categories, double rating, String seriesLength){
         super();
         this.titel = titel;
+        //this.categories = new ArrayList<>();
         this.categories = categories;
         this.rating = rating;
         this.year = year;
-        this.series = new Series[series.length];
+        this.series = new Series[100];
         this.counter = 0;
         this.seriesLength = seriesLength;
     }
@@ -42,8 +44,8 @@ public class Series extends Media implements IMedia {
             double rating = Double.parseDouble(position[3].trim());
             String seriesLength = position[4].trim();
 
-            String s = String.valueOf(new Series(titel, year, categories, rating, seriesLength));
-            series[i] = s;
+            Series s = new Series (titel, year, categories, rating, seriesLength);
+            this.series[i] = s;
         }
         Collections.shuffle(Arrays.asList(series));
     }

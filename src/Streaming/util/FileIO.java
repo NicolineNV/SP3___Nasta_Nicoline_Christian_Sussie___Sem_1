@@ -24,9 +24,9 @@ public class FileIO {
     }
 
     public void threeOptions(){
-        String resolved = tUI.promptText("No match\nTry again: Y\nGo Back: B\nCreate new account: C");
+        String resolved = tUI.promptText("No match\nTry again: A\nGo Back: B\nCreate new account: C");
         switch (resolved.toUpperCase()) {
-            case "Y":
+            case "A":
                 //tryAgaian();
                 break;
 

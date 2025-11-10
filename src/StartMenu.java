@@ -9,6 +9,8 @@ public class StartMenu {
        //User test = new User();
        //test.user();
 
+        Search test = new Search();
+        test.userSearch("Data\\movieData.csv","DRAMA");
 
 
     }

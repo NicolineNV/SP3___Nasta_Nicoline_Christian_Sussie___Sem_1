@@ -25,9 +25,9 @@ public class TextUI {
         } return promptQuestion();
     }
 
-    public String IOExceptionMessage(){
-        System.out.println("It looks like you tried to type in an unrecognizable character");
-        return "";
+    public String IOExceptionMessage(String exception){
+        System.out.println();
+        return exception;
     }
 }
 
