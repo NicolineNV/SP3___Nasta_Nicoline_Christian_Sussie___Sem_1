@@ -1,12 +1,10 @@
 package Streaming;
 
-public interface IMedia {
 
-    String getTitel();
 
-    String getCategories();
-
-    double getRating();
-
-    String getYear();
-}
+    public interface IMedia {
+        String getTitle();
+        String getYear();
+        String getCategory();
+        double getRating();
+    }

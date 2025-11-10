@@ -73,4 +73,3 @@ public class Series extends Media implements IMedia {
         return seriesLength;
     }
 }
-
