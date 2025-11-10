@@ -1,21 +1,21 @@
 package Streaming.util;
-import Streaming.util.FileIO;
 public class TextUI {
 
+    FileIO fileIO = new FileIO("xxx?","xx?");
 
+    public String displayMessage(String msg) {
+        System.out.println(msg);
+        return "";
+    }
 
     public String promptText(String output) {
         displayMessage(output);
-        String answer = FileIO.userInput(); // hardkode så denne!!
+        String answer = fileIO.readUserInput(); // hardkode så denne!!
         return answer;
     }
 
-    public void displayMessage(String msg) {
-        System.out.println(msg);
-    }
-
     public boolean promptQuestion() { // user question yes or no metode
-                String answer= FileIO.userInput(); // hardkode denne!!
+        String answer= fileIO.readUserInput(); // hardkode denne!!
         if (answer.equalsIgnoreCase("Y")) {
             return true;
         } else if (answer.equalsIgnoreCase("N")) {
@@ -23,5 +23,10 @@ public class TextUI {
         } else {
             displayMessage("Illegal input. Try again");
         } return promptQuestion();
+    }
+
+    public String IOExceptionMessage(){
+        System.out.println("It looks like you tried to type in an unrecognizable character");
+        return "";
     }
 }
