@@ -8,26 +8,44 @@ public class FileIO {
 
     protected String fileName;
     protected String userSearch;
-    private TextUI ui = new TextUI();
+    TextUI tUI = new TextUI();
 
     public FileIO (String fileName, String userSearch) {
         this.fileName = fileName;
         this.userSearch = userSearch;
     }
 
-    private Scanner scan = new Scanner(System.in);
 
-    public String userInput (){
-        String kkk = scan.nextLine();
-        return kkk;
+    public String readUserInput(){
+        Scanner scanner = new Scanner(System.in);
+        String userInput = scanner.nextLine();
+        return userInput;
+    }
+
+
+    public void threeOptions(){
+        String resolved = tUI.promptText("No match\nTry again: Y\nGo Back: B\nCreate new account: C");
+        switch (resolved.toUpperCase()) {
+            case "Y":
+                //tryAgaian();
+                break;
+
+            case "B":
+                //goBack();
+                break;
+
+            case "C":
+                //createAccount();
+                break;
+
+            default:
+                System.out.println("Nothing found");
+        }
     }
 
 
     public String readFile (String fileName, String userSearch) {
-
         System.out.println("Here is som titels you can explore: \n");
-
-
         try (Scanner scanner = new Scanner(new File(fileName))){
             boolean found = false;
 
@@ -41,7 +59,7 @@ public class FileIO {
             }
             if (!found){
                 System.out.println("The desired titel was not found \n" + "Would you like to search for another titel? (Y/N)");
-                ui.promptQuestion();
+                tUI.promptQuestion();
             }
 
         } catch (FileNotFoundException e) {
@@ -49,9 +67,6 @@ public class FileIO {
             throw new RuntimeException(e);
         }
 
-
+        return "";
     }
 }
-
-
-
