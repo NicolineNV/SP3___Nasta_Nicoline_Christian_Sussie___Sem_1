@@ -3,21 +3,29 @@ package Streaming;
 import Streaming.util.FileIO;
 import Streaming.util.TextUI;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class User extends MainMenu {
-    private ArrayList<String> savedTitles; // instans variabel for arraylist
+    private ArrayList<String> savedMedia; // instans variabel for arraylist
+    private ArrayList<String> watchedMedia;
     String Username = "Hans";
     String Password = "ABC";
     TextUI tUI = new TextUI();
+    String fileName;
+    String userSearch;
+    FileIO fIO = new FileIO(fileName, userSearch);
+
     String password;
 
 
     boolean decision;
 
     public User() {
-        this.savedTitles = new ArrayList<>();
+        this.savedMedia = new ArrayList<>();
+        this.watchedMedia = new ArrayList<>();
     }
 
     public String user() {
@@ -92,49 +100,154 @@ public class User extends MainMenu {
 
 */
 
-    /* ////////////////////////// arraylist for saved film ////////////////////////////// */
+    /* ////////////////////////// arraylist for saved Media ////////////////////////////// */
 
 
-    public User(ArrayList<String> titles) {
+    public void usersSavedDataList(ArrayList<String> mediaTitles) {
 
-        if (titles != null) { // if there not are make a list to save on, this will make the list.
-            this.savedTitles = new ArrayList<>(titles);
+        if (mediaTitles != null) { // if there not are make a list to save on, this will make the list.
+            this.savedMedia = new ArrayList<>(mediaTitles);
         } else {
-            this.savedTitles = new ArrayList<>(); // if there is a saved list it vil save the list.
+            this.savedMedia = new ArrayList<>(); // if there is a saved list it vil save the list.
         }
     }
 
-    public void addTitle(String title) { // this method add movies og serie titel to the list.
-        savedTitles.add(title);
+    public void addTitleToSaved(String title) { // this method add movies og serie titel to the list.
+        savedMedia.add(title);
     }
 
     public ArrayList<String> getSavedTitles() { // make the privet Arraylist titles avaibel
-        return savedTitles;
+        return savedMedia;
     }
 
-    public void copyLineFromDocToNewDoc(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        String wantedMediaName =  tUI.promptText("write name on the movie or serie");
-        // indsæt søgning af dokument og return lokation
+    public void copyLineFromDocToSavedArraylist() {
+        userSearch = tUI.promptText("write name on the movie or serie"); // input from user
+        String takeInfoFromDoc = "\\Data\\movieData.csv" + "\\Data\\seriesData.csv"; // the data over the movie and series.
+        // String moveInfoToDoc = "\\Data\\savedData.csv"; // there the watched media shall turn to.
 
-        String tagfraDoc = "Data/movieData.csv && Data/seriesData.csv"; // nok fejl her
-        String rykTilDoc = "Data/savedData.csv";
+        // we want to read the file and see after the wanted title
+        try (Scanner scan1 = new Scanner(new File(takeInfoFromDoc))) {
+            boolean found = false;
 
-        // we want to read the file and copy the info an add to doc if user want
+            while (scan1.hasNextLine()) {
+                String line = scan1.nextLine();
 
+                if (line.contains(userSearch)) {
+                    // ask the user would they like to add media to the savedlist.
+                    tUI.displayMessage("would you like to add" + line + "to your saved list? y/n: ");
+                    boolean answer = tUI.promptQuestion(); // call yes/ no boolean method.
+                    if (answer == true) {
+                        addTitleToSaved(line); // add the full line off the title to the arraylist.
+                        found = true;
+                    }
+                    if (answer == false) {
+                        // call tilbage filmens oversigt.
+                        tUI.displayMessage("indsæt metode kald til filmens oversigt");
+                    }
 
-        // Læs indholdet af filen
-        // indsæt scaner der læser dokumenter
+                }
+                if (!found) {
+                    tUI.displayMessage("The desired titel was not found \n" + "Would you like to search for another titel? (Y/N)");
+                    boolean answer2 = tUI.promptQuestion();
+                    if (answer2 == true) {
+                        // kald efter metode til søgning af film
+                        tUI.displayMessage("indsæt metode der kalder søg af film");
+                    }
+                    if (answer2 == false) {
+                        // kald metode gå til hoved menu
+                        tUI.displayMessage(" indsæt metode der kalder hovedmenu ");
+                    }
 
-        // indsæt scanner der søger efter wantedMediaName
-        // funktion der giver et output med den søgte film
+                }
 
-        // Spørg brugeren
-        tUI.displayMessage("would you like to add to wanted to watch list " + "funktion output insæt her" + "? (y/n): ");
-        boolean answer = tUI.promptQuestion();
+            }
 
+        } catch (FileNotFoundException e) {
+            tUI.displayMessage("We have technical difficulties - we are working on them and will be back shortly");
+            throw new RuntimeException(e);
+        }
 
-           }
+    }
 
+    /* /////////////////////////// Arraylist for Wacthed Media ////////////////////////////////////*/
 
+    public void usersWatchedDataList(ArrayList<String> mediaTitles) {
+
+        if (mediaTitles != null) { // if there not are make a list over the watched, this will make the list.
+            this.watchedMedia = new ArrayList<>(mediaTitles);
+        } else {
+            this.watchedMedia = new ArrayList<>(); // if there is a watched list it will add to the list.
+        }
+    }
+
+    public void addTitleToWatched(String title) { // this method add movies and series titel to the list.
+        watchedMedia.add(title);
+    }
+
+    public ArrayList<String> getWatchedTitles() { // make the privet Arraylist titles avaibel
+        return watchedMedia;
+    }
+
+    public void copyLineFromDocToWatchedArraylist() {
+        userSearch = tUI.promptText("write name on the movie or serie"); // input from user
+        String takeInfoFromDoc = "\\Data\\movieData.csv" + "\\Data\\seriesData.csv"; // the data over the movie and series.
+        // we want to read the file and see after the wanted title
+        try (Scanner scan = new Scanner(new File(takeInfoFromDoc))) {
+            boolean found = false;
+
+            while (scan.hasNextLine()) {
+                String line = scan.nextLine();
+
+                if (line.contains(userSearch)) {
+                    // ask the user would they like to watch the media.
+                    tUI.displayMessage("would you like to Watch" + line + " ? y/n: ");
+                    boolean answer = tUI.promptQuestion(); // call yes/ no boolean method.
+                    if (answer == true) {
+                        addTitleToWatched(line); // add the full line off the title to the arraylist.
+                        tUI.displayMessage("you watch now " + line);
+                        found = true;
+                    }
+                    if (answer == false) {
+                        // call tilbage filmens oversigt.
+                        tUI.displayMessage("indsæt metode kald til filmens oversigt");
+                    }
+
+                }
+                if (!found) {
+                    tUI.displayMessage("The desired titel was not found \n" + "Would you like to search for another titel? (Y/N)");
+                    boolean answer2 = tUI.promptQuestion();
+                    if (answer2 == true) {
+                        // kald efter metode til søgning af film
+                        tUI.displayMessage("indsæt metode der kalder søg af film");
+                    }
+                    if (answer2 == false) {
+                        // kald metode gå til hoved menu
+                        tUI.displayMessage(" indsæt metode der kalder hovedmenu ");
+                    }
+
+                }
+
+            }
+
+        } catch (
+                FileNotFoundException e) {
+            tUI.displayMessage("We have technical difficulties - we are working on them and will be back shortly");
+            throw new RuntimeException(e);
+        }
+
+    }
+    
+    /* 
+          ////////////////////////// Mangler stadig  ////////////////////////////// 
+           
+          * metode til fjerne fra array hvis bruger ikke ønsker medie på listen over gemt.
+          * metode til at fjerne fra liste over saved når man trykker se og flyt til watched.(kald på metode addTitleToWatched)
+          * måske lave varibel i top til at forkorte kode eksempel userseach.
+          *
+     
+     */
+    
+    
 }
+
+

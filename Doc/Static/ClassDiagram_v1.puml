@@ -21,7 +21,9 @@ ArrayList Accounts
 String userName
 String userPassword
 String ArrayList <> addAccounts ();
+void usersSavedDataList(ArrayList<String> mediaTitles);
 String ArrayList <> savedMedia ();
+void copyLineFromDocToSavedMediaArraylist()
 String ArrayList <> watchedMedia ();
 }
 

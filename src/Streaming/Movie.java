@@ -62,7 +62,7 @@ public class Movie extends Media implements IMedia{
 
     @Override
     public String getTitle() {
-        return titel;
+        return title;
     }
 
     @Override

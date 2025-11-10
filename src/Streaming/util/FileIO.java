@@ -15,7 +15,7 @@ public class FileIO {
         this.userSearch = userSearch;
     }
 
-    private Scanner scan = new Scanner(System.in);
+    public Scanner scan = new Scanner(System.in);
 
     public String readUserInput(){
         Scanner scanner = new Scanner(System.in);
@@ -46,7 +46,7 @@ public class FileIO {
 
     public String readFile (String fileName, String userSearch) {
 
-        System.out.println("Here is som titels you can explore: \n");
+        System.out.println("Here is som titels you can explore: \n");    // linje skal flyttes senere
 
         try (Scanner scanner = new Scanner(new File(fileName))){
             boolean found = false;
