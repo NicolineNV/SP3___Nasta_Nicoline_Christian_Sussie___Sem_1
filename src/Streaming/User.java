@@ -4,6 +4,7 @@ import Streaming.util.FileIO;
 import Streaming.util.TextUI;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class User extends MainMenu {
     private ArrayList<String> savedTitles; // instans variabel for arraylist
@@ -110,4 +111,30 @@ public class User extends MainMenu {
     public ArrayList<String> getSavedTitles() { // make the privet Arraylist titles avaibel
         return savedTitles;
     }
+
+    public void copyLineFromDocToNewDoc(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String wantedMediaName =  tUI.promptText("write name on the movie or serie");
+        // indsæt søgning af dokument og return lokation
+
+        String tagfraDoc = "Data/movieData.csv && Data/seriesData.csv"; // nok fejl her
+        String rykTilDoc = "Data/savedData.csv";
+
+        // we want to read the file and copy the info an add to doc if user want
+
+
+        // Læs indholdet af filen
+        // indsæt scaner der læser dokumenter
+
+        // indsæt scanner der søger efter wantedMediaName
+        // funktion der giver et output med den søgte film
+
+        // Spørg brugeren
+        tUI.displayMessage("would you like to add to wanted to watch list " + "funktion output insæt her" + "? (y/n): ");
+        boolean answer = tUI.promptQuestion();
+
+
+           }
+
+
 }
