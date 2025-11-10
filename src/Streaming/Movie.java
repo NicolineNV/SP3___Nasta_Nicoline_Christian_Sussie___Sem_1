@@ -20,6 +20,7 @@ public class Movie extends Media implements IMedia{
         this.movies = new MovieData [movies.length];
         this.counter = 0;
     }
+
     public MovieData getNext(){
         if (counter >=  movies.length){
             counter = 0;
@@ -64,4 +65,6 @@ public class Movie extends Media implements IMedia{
     public String getYear() {
         return year;
     }
+
+
 }
