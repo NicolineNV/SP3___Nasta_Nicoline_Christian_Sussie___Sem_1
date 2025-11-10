@@ -8,7 +8,7 @@ public class Movie extends Media implements IMedia{
     private double rating;
     private String year;
 
-    protected MovieData[] movies;
+    protected Movie[] movies;
     private int counter;
 
     public Movie(String titel, String year, String categories, double rating) {
@@ -17,11 +17,11 @@ public class Movie extends Media implements IMedia{
         this.categories = categories;
         this.rating = rating;
         this.year = year;
-        this.movies = new MovieData [movies.length];
+        this.movies = new Movie [movies.length];
         this.counter = 0;
     }
 
-    public MovieData getNext(){
+    public Movie getNext(){
         if (counter >=  movies.length){
             counter = 0;
         } else {
@@ -38,22 +38,11 @@ public class Movie extends Media implements IMedia{
             String categories = position[2].trim();
             double rating = Double.parseDouble(position[3].trim());
 
-            MovieData m = new MovieData(titel, year, categories, rating);
+            Movie m = new Movie(titel, year, categories, rating);
             this.movies[i] = m;
         }
         Collections.shuffle(Arrays.asList(movies));
 
-    }
-
-
-    @Override
-    public String getTitel() {
-        return titel;
-    }
-
-    @Override
-    public String getCategories() {
-        return categories;
     }
 
     @Override
@@ -62,8 +51,18 @@ public class Movie extends Media implements IMedia{
     }
 
     @Override
+    public String getTitle() {
+        return titel;
+    }
+
+    @Override
     public String getYear() {
         return year;
+    }
+
+    @Override
+    public String getCategory() {
+        return categories;
     }
 
 

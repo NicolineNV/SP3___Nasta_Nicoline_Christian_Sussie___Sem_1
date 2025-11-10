@@ -8,20 +8,20 @@ public class FileIO {
 
     protected String fileName;
     protected String userSearch;
-    TextUI tUI = new TextUI();
+    private TextUI tUI = new TextUI();
 
     public FileIO (String fileName, String userSearch) {
         this.fileName = fileName;
         this.userSearch = userSearch;
     }
 
+    private Scanner scan = new Scanner(System.in);
 
     public String readUserInput(){
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
         return userInput;
     }
-
 
     public void threeOptions(){
         String resolved = tUI.promptText("No match\nTry again: Y\nGo Back: B\nCreate new account: C");
@@ -45,7 +45,9 @@ public class FileIO {
 
 
     public String readFile (String fileName, String userSearch) {
+
         System.out.println("Here is som titels you can explore: \n");
+
         try (Scanner scanner = new Scanner(new File(fileName))){
             boolean found = false;
 
@@ -70,3 +72,6 @@ public class FileIO {
         return "";
     }
 }
+
+
+

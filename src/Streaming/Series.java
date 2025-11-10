@@ -10,7 +10,7 @@ public class Series extends Media implements IMedia {
     private double rating;
     private String year;
     protected String seriesLength;
-    protected SeriesData[] series;
+    protected Series[] series;
     private int counter;
 
     public Series (String titel, String year, String categories, double rating, String seriesLength){
@@ -19,7 +19,7 @@ public class Series extends Media implements IMedia {
         this.categories = categories;
         this.rating = rating;
         this.year = year;
-        this.series = new SeriesData[series.length];
+        this.series = new Series[series.length];
         this.counter = 0;
         this.seriesLength = seriesLength;
     }
@@ -42,22 +42,13 @@ public class Series extends Media implements IMedia {
             double rating = Double.parseDouble(position[3].trim());
             String seriesLength = position[4].trim();
 
-            String s = String.valueOf(new SeriesData(titel, year, categories, rating, seriesLength));
+            String s = String.valueOf(new Series(titel, year, categories, rating, seriesLength));
             series[i] = s;
         }
         Collections.shuffle(Arrays.asList(series));
     }
 
 
-    @Override
-    public String getTitel() {
-        return titel;
-    }
-
-    @Override
-    public String getCategories() {
-        return categories;
-    }
 
     @Override
     public double getRating() {
@@ -65,8 +56,18 @@ public class Series extends Media implements IMedia {
     }
 
     @Override
+    public String getTitle() {
+        return titel;
+    }
+
+    @Override
     public String getYear() {
         return year;
+    }
+
+    @Override
+    public String getCategory() {
+        return categories;
     }
 
     public String getSeriesLength(){

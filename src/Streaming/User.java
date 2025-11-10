@@ -14,7 +14,7 @@ public class User extends MainMenu {
     String password;
 
 
-    boolean decition;
+    boolean decision;
 
     public User() {
         this.savedTitles = new ArrayList<>();
