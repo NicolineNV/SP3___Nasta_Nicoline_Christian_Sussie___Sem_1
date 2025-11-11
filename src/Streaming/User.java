@@ -13,9 +13,9 @@ public class User {
     private ArrayList<String> watchedMedia;
     String Username = "Hans";
     String Password = "ABC";
-    String fileName;
+    //String fileName;
     String userSearch;
-    FileIO fIO = new FileIO(fileName, userSearch);
+    FileIO fIO = new FileIO(userSearch);
     TextUI tUI = new TextUI();
 
     String password;

@@ -7,7 +7,7 @@ import Streaming.util.TextUI;
 public class StartMenu {
 
 
-    FileIO io = new FileIO("Data\\movieData.csv", "Hej"); // Userinput skal være noget andet
+    FileIO io = new FileIO("Hej"); // Userinput skal være noget andet
     TextUI ui = new TextUI();
     User use = new User();
 

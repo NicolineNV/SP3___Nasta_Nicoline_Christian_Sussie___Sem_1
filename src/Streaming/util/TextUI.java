@@ -1,7 +1,7 @@
 package Streaming.util;
 public class TextUI {
 
-    FileIO fileIO = new FileIO(" "," ");
+    FileIO fileIO = new FileIO( " ");
 
     //public TextUI (String ){
      //   this.fileIO = fileIO;
@@ -33,7 +33,7 @@ public class TextUI {
         return true;
     }
 
-    public String IOExceptionMessage(String exception){
+    public static String IOExceptionMessage(String exception){
         System.out.println();
         return exception;
     }

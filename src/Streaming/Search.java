@@ -9,7 +9,7 @@ public class Search {
 
     String fileName;
     String userSearchInput;
-    FileIO fIO = new FileIO(fileName, userSearchInput);
+    FileIO fIO = new FileIO(userSearchInput);
     TextUI tUI = new TextUI();
     String title;
     String year;
@@ -22,8 +22,8 @@ public class Search {
 
     }
 
-    public String userSearch(String filename, String userSearchInput) {
-        fIO.readFile("Data\\movieData.csv", userSearchInput);
+    public String userSearch(String userSearchInput) {
+        fIO.readFile(userSearchInput); // der bliver indlæst begge filer
 
         /* Vi skal have readFile til at snakke sammen med .getCategory() - aner bare ikke hvordan dette skal gøres
         */
