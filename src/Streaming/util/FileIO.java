@@ -1,6 +1,7 @@
 package Streaming.util;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -8,40 +9,43 @@ public class FileIO {
 
     protected String fileName;
     protected String userSearch;
-    private TextUI tUI = new TextUI();
+    private TextUI tUI;
+
 
     public FileIO (String fileName, String userSearch) {
         this.fileName = fileName;
         this.userSearch = userSearch;
+        this.tUI = new TextUI();
     }
 
     public Scanner scan = new Scanner(System.in);
 
     public String readUserInput(){
-        Scanner scanner = new Scanner(System.in);
-        String userInput = scanner.nextLine();
-        return userInput;
+        userSearch = scan.nextLine();
+        return userSearch;
     }
 
-    public void threeOptions(){
-        String resolved = tUI.promptText("No match\nTry again: A\nGo Back: B\nCreate new account: C");
-        switch (resolved.toUpperCase()) {
-            case "A":
-                //tryAgaian();
-                break;
 
-            case "B":
-                //goBack();
-                break;
+    public void String(fileName, String userSearch) {
+        ArrayList<String> readDataFile (String path){
+            ArrayList<String> dataFile = new ArrayList<>();
+            File file = new File(path);
+            try {
+                Scanner scan = new Scanner(file);
+                scan.nextLine(); // skips header "title; year; categories; rating;"
 
-            case "C":
-                //createAccount();
-                break;
-
-            default:
-                System.out.println("Nothing found");
+                while (scan.hasNextLine()) {
+                    String line = scan.nextLine();
+                    dataFile.add(line);
+                }
+            } catch (FileNotFoundException e) {
+                System.out.println(tUI.IOExceptionMessage("We are experiencing some technical difficulties - sorry for the inconvenience"));
+            }
+            return dataFile;
         }
     }
+
+
 
 
     public String readFile (String fileName, String userSearch) {

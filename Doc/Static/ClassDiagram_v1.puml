@@ -84,17 +84,17 @@ String readFile ();
 
 }
 
-StartMenu *-- MainMenu
+StartMenu --- MainMenu
 
 IMedia <|-- Series
 IMedia <|-- Movie
 
 
 
-MainMenu *-- User
-MainMenu *-- Media
-MainMenu *-- TextUI
-MainMenu *-- FileIO
+MainMenu --- User
+MainMenu --- Media
+MainMenu --- TextUI
+MainMenu --- FileIO
 
 
 Media *-- Movie

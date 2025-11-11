@@ -1,7 +1,11 @@
 package Streaming.util;
 public class TextUI {
 
-    FileIO fileIO = new FileIO("xxx?","xx?");
+    FileIO fileIO = new FileIO(" "," ");
+
+    //public TextUI (String ){
+     //   this.fileIO = fileIO;
+    //}
 
     public String displayMessage(String msg) {
         System.out.println(msg);
@@ -14,15 +18,19 @@ public class TextUI {
         return answer;
     }
 
+    // Added a while loop - because there were a chance for stackoverflow = recursive call without restriction
     public boolean promptQuestion() { // user question yes or no metode
-        String answer= fileIO.readUserInput(); // hardkode denne!!
-        if (answer.equalsIgnoreCase("Y")) {
-            return true;
-        } else if (answer.equalsIgnoreCase("N")) {
-            return false;
-        } else {
-            displayMessage("Illegal input. Try again");
-        } return promptQuestion();
+       /* while () {
+            String answer = fileIO.readUserInput(); // hardkode denne!!
+            if (answer.equalsIgnoreCase("Y")) {
+                return true;
+            } else if (answer.equalsIgnoreCase("N")) {
+                return false;
+            } else {
+                System.out.println("Illegal input. Try again");
+            }
+        }*/
+        return true;
     }
 
     public String IOExceptionMessage(String exception){

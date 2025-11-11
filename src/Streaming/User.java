@@ -8,15 +8,15 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class User extends MainMenu {
+public class User {
     private ArrayList<String> savedMedia; // instans variabel for arraylist
     private ArrayList<String> watchedMedia;
     String Username = "Hans";
     String Password = "ABC";
-    TextUI tUI = new TextUI();
     String fileName;
     String userSearch;
     FileIO fIO = new FileIO(fileName, userSearch);
+    TextUI tUI = new TextUI();
 
     String password;
 
@@ -103,7 +103,7 @@ public class User extends MainMenu {
     /* ////////////////////////// arraylist for saved Media ////////////////////////////// */
 
 
-    public void usersSavedDataList(ArrayList<String> mediaTitles) {
+    public void usersSavedDataList(ArrayList <String> mediaTitles) {
 
         if (mediaTitles != null) { // if there not are make a list to save on, this will make the list.
             this.savedMedia = new ArrayList<>(mediaTitles);
@@ -246,8 +246,9 @@ public class User extends MainMenu {
           *
      
      */
-    
-    
+
+
+
 }
 
 

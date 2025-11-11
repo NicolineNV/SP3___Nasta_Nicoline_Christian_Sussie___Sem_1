@@ -5,7 +5,7 @@ import Streaming.util.TextUI;
 
 import java.util.Objects;
 
-public class Search extends MainMenu {
+public class Search {
 
     String fileName;
     String userSearchInput;

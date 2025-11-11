@@ -7,11 +7,7 @@ public class Movie extends Media implements IMedia{
     String title;
     String year;
     String categories;
-
-
-
-    protected Movie [] movies;
-    private int counter;
+    protected String[] movies = new String[100];
 
     public Movie(String title, String year, String categories, double rating) {
         super();
@@ -45,7 +41,7 @@ public class Movie extends Media implements IMedia{
             double rating = Double.parseDouble(position[3].trim());
 
             Movie m = new Movie(title, year, categories, rating);
-            this.movies[i] = m;
+            //this.movies[i] = m;
         }
         Collections.shuffle(Arrays.asList(movies));
     }
@@ -77,5 +73,5 @@ public class Movie extends Media implements IMedia{
 
     public Movie getMovie (int index){
         return this.movies[index];
-    }
+    }*/
 }
