@@ -1,5 +1,5 @@
 package Streaming;
-
+import java.util.*;
 import Streaming.util.FileIO;
 import Streaming.util.TextUI;
 
@@ -26,20 +26,97 @@ public class User {
     public User() {
         this.savedMedia = new ArrayList<>();
         this.watchedMedia = new ArrayList<>();
+
+    }
+        //List of saved usernames.
+        ArrayList<String> userNames = new ArrayList<>(Arrays.asList("Hans", "Grete", "Romeo", "Julie", "Ælling"));
+
+        //list of saved passwords.
+        ArrayList<String> passwords = new ArrayList<>(Arrays.asList("ABC", "BCA", "CAB", "AAA", "BBB"));
+
+
+        //This method lets you login with your "Netflix" account.
+        public String Login() {
+
+            //Time to type in your username.
+            String input1 = tUI.promptText("Hi this is Netflix. Type your username:");
+
+            //Checking if the username already exist.
+            if (!userNames.contains(input1)) {
+
+                //You got here if you entered an incorrect username.
+                String input2 = tUI.promptText("The account " + "'" + input1 + "'" + " was not found\nTry again: Y\nExit: X");
+
+                //This method is now given us two options "Try again" or "Exit".
+                while (!input2.equalsIgnoreCase("Y") && !input2.equalsIgnoreCase("X")) {
+                    input2 = tUI.promptText("'" + input2 + "'" + " is not a valid argument\nTry again: Y\nExit: X");
+                }
+                switch (input2.toUpperCase(Locale.ROOT)) {
+                    case "Y":
+                        Login();       //Try Again
+                    case "X":
+                        exitCode();    //Exit
+                }
+            } else {
+
+                String reTry = "RunItAgain";                 //reTry & while-loop is only created so we can-
+                while (!reTry.equals("StopRunningIt")) {     //loop everything below over again. To use the-
+                    //"Try again" option in the switch method 'line95'.
+                    //Time to type the password.
+                    String input3 = tUI.promptText("Welcome back " + input1 + "\nType password: ");
+
+                    //Checking if the password is correct.
+                    if (!passwords.get(userNames.indexOf(input1)).equals(input3)) {
+
+                        //You got here if you entered an incorrect password.
+                        String input4 = tUI.promptText("Incorrect password for the account " + "'" + input1 + "'\nGo Back: B\nTry again: Y\nExit: X");
+
+                        //This method is now given us three options "Go Back", "Try again" or "Exit".
+                        while (!input4.equalsIgnoreCase("B") && !input4.equalsIgnoreCase("Y") && !input4.equalsIgnoreCase("X")) {
+                            input4 = tUI.promptText("'" + input4 + "'" + " is not a valid argument\nGo Back: B\nTry again: Y\nExit: X");
+                        }
+
+                        switch (input4.toUpperCase(Locale.ROOT)) {
+                            case "B":
+                                Login();                       //Go BAck
+                                reTry = "StopRunningIt";       //This reTry is used to "close" the while-loop
+                                break;
+                            case "Y":
+                                reTry = "RunItAgain";          //Try again - Is connected to the
+                                break;                         //            while-loop in 'line68'.
+                            case "X":
+                                exitCode();                    //Exit
+                                reTry = "StopRunningIt";       //This reTry is used to "close" the while-loop
+
+                        }
+                    } else {
+
+                        //This just shows that you finally got through.
+                        reTry = "StopRunningIt";
+                        System.out.println("Welcome back to Netflix");
+
+                    }
+                }
+            }
+            return "";
+        }
+
+        //ExitCode's only function is to be called when we want to exit a method.
+        public void exitCode() {
+        }
+
     }
 
-    public String user() {
+
+
+/*  version 2
+    public String userName() {
         String username = tUI.promptText("Enter username");
 
-        //System.out.println("Enter username");
-        //Scanner scan1 = new Scanner(System.in);
-        //String username = scan1.nextLine();
-
         //Control of username.
-
         if (!Username.equals(username)) {
             tUI.displayMessage("This username does not exist");
-            user(); // ændre til hovedmenu bliver kaldt
+            userName(); // ændre til hovedmenu bliver kaldt
         } else {
             logincode();
         }
@@ -65,8 +142,14 @@ public class User {
         return "Welcome " + Username + password;
 
     }
+*/
 
         /*
+        // the start version.
+        //System.out.println("Enter username");
+        //Scanner scan1 = new Scanner(System.in);
+        //String username = scan1.nextLine();
+
             String password = tUI.promptText("Enter password");
             //Scanner scan2 = new Scanner(System.in);
             //String password = scan2.nextLine();
@@ -83,8 +166,7 @@ public class User {
         return username;
     }
 }
-*/
-/*
+
             while (Password.equals(password) && (decition == true)) {
                 decition = tUI.promptQuestion("Wrong password, would you like to try again?");
                 password = tUI.promptText("Enter password");
